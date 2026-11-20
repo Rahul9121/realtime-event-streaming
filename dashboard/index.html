@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Realtime Event Streaming — Run Replay</title>
+  <title>Real-Time Event Streaming Pipeline | Rahul Ega</title>
+  <meta name="description" content="Portfolio project by Rahul Ega: synthetic trade events flow through Redpanda (Kafka API), Spark Structured Streaming, and Delta Lake (bronze, silver, gold) with schema checks, dead-letter handling, watermarks, dedupe, windowed aggregates, and checkpoint recovery. This page replays a recorded run — not a live cluster." />
+  <meta name="author" content="Rahul Ega" />
+  <link rel="canonical" href="https://rahul9121.github.io/realtime-event-streaming/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rahul Ega · Portfolio" />
+  <meta property="og:title" content="Real-Time Event Streaming Pipeline" />
+  <meta property="og:description" content="I built a streaming path from synthetic trades to Delta Lake: Redpanda buffer, Spark Structured Streaming (schema, DLQ, watermark, dedupe, tumbling and sliding windows, checkpoints, gold MERGE), plus this recorded-run replay dashboard. Not a live Kafka cluster." />
+  <meta property="og:url" content="https://rahul9121.github.io/realtime-event-streaming/" />
+  <meta property="og:image" content="https://rahul9121.github.io/realtime-event-streaming/og-image.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Real-Time Event Streaming Pipeline" />
+  <meta name="twitter:description" content="Senior data engineer portfolio piece by Rahul Ega: Redpanda + Spark Structured Streaming + Delta Lake bronze/silver/gold, with a recorded replay dashboard (not live)." />
+  <meta name="twitter:image" content="https://rahul9121.github.io/realtime-event-streaming/og-image.svg" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <style>
     :root { --bg:#05060f; --cyan:#00f0ff; --magenta:#ff2bd6; --lime:#b6ff00; --panel:#0c0e1a; --text:#e8eefc; --muted:#8b93a7; }
@@ -31,9 +48,49 @@
     footer { padding:1rem 1.5rem 2rem; color:var(--muted); font-size:0.8rem; }
     a { color:var(--cyan); }
     #status { margin-left:0.5rem; color:var(--lime); font-size:0.85rem; }
+  
+    .modal-backdrop { position:fixed; inset:0; background:rgba(2,4,12,0.82); display:flex; align-items:center; justify-content:center; z-index:1000; padding:1rem; backdrop-filter:blur(4px); }
+    .modal-backdrop[hidden] { display:none !important; }
+    .modal { width:min(560px,100%); background:#0a0c18; border:1px solid #1e2744; border-radius:14px; box-shadow:0 24px 80px rgba(0,0,0,0.55); padding:1.35rem 1.4rem 1.2rem; max-height:min(90vh,640px); overflow:auto; }
+    .modal h2 { margin:0 0 0.35rem; font-size:1.15rem; color:var(--cyan); }
+    .modal .tag { display:inline-block; font-size:0.72rem; color:var(--magenta); border:1px solid rgba(255,43,214,0.45); border-radius:999px; padding:0.15rem 0.55rem; margin-bottom:0.85rem; }
+    .modal p { margin:0 0 0.7rem; line-height:1.55; color:var(--text); font-size:0.95rem; }
+    .modal ul { margin:0 0 0.9rem; padding-left:1.15rem; color:var(--text); font-size:0.92rem; line-height:1.5; }
+    .modal li { margin-bottom:0.35rem; }
+    .modal .muted { color:var(--muted); font-size:0.85rem; margin-bottom:1rem; }
+    .modal-actions { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:flex-end; }
+    .modal-actions button.primary { background:rgba(182,255,0,0.08); font-weight:600; }
+
   </style>
 </head>
 <body>
+
+  <div class="modal-backdrop" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="modal">
+      <h2 id="introTitle">What you are looking at</h2>
+      <div class="tag">Rahul Ega · recorded replay · not a live cluster</div>
+      <p>
+        I built this as a portfolio streaming project. A Python producer creates synthetic trade events
+        (including duplicates, late arrivals, and a few broken records on purpose). Those events go into
+        Redpanda, which speaks the Kafka API. Spark Structured Streaming reads them, checks a defined schema,
+        sends bad rows to a dead-letter path, cleans and dedupes the good ones with a watermark, runs
+        tumbling and sliding window aggregates, and writes bronze / silver / gold tables to Delta Lake.
+        Gold uses foreachBatch with a Delta merge so window keys can be upserted safely on retry.
+      </p>
+      <p>This page is <strong>not</strong> wired to a live broker. It replays metrics from a real recorded run so you can see the shape of the pipeline without installing Docker.</p>
+      <ul>
+        <li><strong>Play</strong> animates events/sec, late and malformed counts, stage progress, and window totals.</li>
+        <li><strong>Pause / Reset / Speed</strong> control the replay.</li>
+        <li>Full code and local run steps: GitHub repo linked in the footer.</li>
+      </ul>
+      <p class="muted">At-least-once processing with checkpoint recovery; gold merge is idempotent at the window grain. Single-node demo, simulated data, no schema registry.</p>
+      <div class="modal-actions">
+        <button type="button" id="btnIntroRepo">View code on GitHub</button>
+        <button type="button" class="primary" id="btnIntroClose">Got it — open dashboard</button>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div>
       <h1>Real-Time Event Streaming Pipeline</h1>
@@ -43,7 +100,7 @@
   </header>
   <div class="banner">
     This page replays a recorded run from <code>run_metrics.json</code>. It is not connected to a live Kafka or Redpanda cluster.
-    Press <strong>Play</strong> to animate the numbers, charts, and stage bars.
+    Press <strong>Play</strong> to animate the numbers, charts, and stage bars. <button type="button" id="btnAbout" style="margin-left:0.5rem;font-size:0.8rem;">About this project</button>
   </div>
   <div class="controls">
     <button class="primary" id="btnPlay" type="button">Play</button>
@@ -86,6 +143,24 @@
   </footer>
   <script>
   (function () {
+
+    var modal = document.getElementById('introModal');
+    function openIntro() { if (modal) modal.hidden = false; }
+    function closeIntro() { if (modal) modal.hidden = true; }
+    var btnClose = document.getElementById('btnIntroClose');
+    var btnAbout = document.getElementById('btnAbout');
+    var btnRepo = document.getElementById('btnIntroRepo');
+    if (btnClose) btnClose.addEventListener('click', closeIntro);
+    if (btnAbout) btnAbout.addEventListener('click', openIntro);
+    if (btnRepo) btnRepo.addEventListener('click', function () {
+      window.open('https://github.com/Rahul9121/realtime-event-streaming', '_blank', 'noopener');
+    });
+    if (modal) {
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeIntro(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeIntro(); });
+      openIntro();
+    }
+
     var state = { data: null, idx: 0, playing: false, timer: null };
     var statusEl = document.getElementById('status');
     var axis = {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05060f"/>
+      <stop offset="100%" stop-color="#0c1230"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="#0a0c18" stroke="#00f0ff" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="96" y="160" fill="#00f0ff" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">RAHUL EGA · DATA ENGINEERING</text>
+  <text x="96" y="250" fill="#e8eefc" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">Real-Time Event Streaming</text>
+  <text x="96" y="320" fill="#e8eefc" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">Pipeline</text>
+  <text x="96" y="400" fill="#8b93a7" font-family="Segoe UI, Arial, sans-serif" font-size="28">Redpanda · Spark Structured Streaming · Delta Lake</text>
+  <text x="96" y="460" fill="#b6ff00" font-family="Segoe UI, Arial, sans-serif" font-size="24">Bronze / silver / gold · watermark · DLQ · checkpoint replay</text>
+  <text x="96" y="530" fill="#ff2bd6" font-family="Segoe UI, Arial, sans-serif" font-size="22">Recorded run dashboard · not a live cluster</text>
+</svg>
