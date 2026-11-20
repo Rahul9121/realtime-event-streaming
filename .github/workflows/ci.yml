@@ -36,7 +36,7 @@ jobs:
           RECORD_WITH_SPARK: "0"
         run: |
           # CI uses the deterministic file-source recorder (not Kafka) for reliability under 15 minutes.
-          python -m src.streaming.record_run --mode file --seconds 20 --output dashboard/run_metrics.json
+          python -m src.streaming.record_run --mode file --seconds 45 --output dashboard/run_metrics.json
 
       - name: Upload dashboard artifact
         uses: actions/upload-pages-artifact@v3
@@ -56,3 +56,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
