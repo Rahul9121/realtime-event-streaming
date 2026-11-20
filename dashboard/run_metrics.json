@@ -1,0 +1,1872 @@
+{
+  "meta": {
+    "project": "realtime-event-streaming",
+    "author": "Rahul Ega",
+    "recorded_at": "2026-11-20T12:33:27.682600+00:00",
+    "started_at": "2026-11-20T12:33:27.369450+00:00",
+    "mode": "file_source_replay",
+    "note": "Replay of a recorded run. Not a live Kafka cluster.",
+    "spark_status": "lightweight_pipeline_mirror",
+    "seed": 42,
+    "watermark_seconds": 30,
+    "tumble_window_seconds": 10,
+    "slide_window_seconds": 30,
+    "slide_step_seconds": 10,
+    "environment": {
+      "python": "3.12.10",
+      "platform": "win32"
+    }
+  },
+  "summary": {
+    "events_generated": 2374,
+    "events_wire": 2374,
+    "valid_events": 2276,
+    "after_dedupe": 2152,
+    "duplicates_dropped": 124,
+    "malformed_count": 98,
+    "late_count": 225,
+    "window_count": 124,
+    "wall_clock_seconds": 0.313,
+    "avg_events_per_second": 7581.03,
+    "avg_batch_duration_ms": 1.04,
+    "per_symbol_trades": {
+      "GOOG": 282,
+      "JPM": 264,
+      "META": 252,
+      "AAPL": 258,
+      "AMZN": 268,
+      "MSFT": 257,
+      "NVDA": 296,
+      "TSLA": 275
+    }
+  },
+  "timeseries": {
+    "events_per_second": [
+      {
+        "t": 0.013,
+        "eps": 98643.09,
+        "cumulative": 100
+      },
+      {
+        "t": 0.024,
+        "eps": 100000.0,
+        "cumulative": 200
+      },
+      {
+        "t": 0.035,
+        "eps": 100000.0,
+        "cumulative": 300
+      },
+      {
+        "t": 0.047,
+        "eps": 100000.0,
+        "cumulative": 400
+      },
+      {
+        "t": 0.058,
+        "eps": 100000.0,
+        "cumulative": 500
+      },
+      {
+        "t": 0.071,
+        "eps": 49560.49,
+        "cumulative": 600
+      },
+      {
+        "t": 0.082,
+        "eps": 100000.0,
+        "cumulative": 700
+      },
+      {
+        "t": 0.094,
+        "eps": 100000.0,
+        "cumulative": 800
+      },
+      {
+        "t": 0.105,
+        "eps": 100000.0,
+        "cumulative": 900
+      },
+      {
+        "t": 0.116,
+        "eps": 100000.0,
+        "cumulative": 1000
+      },
+      {
+        "t": 0.127,
+        "eps": 100000.0,
+        "cumulative": 1100
+      },
+      {
+        "t": 0.138,
+        "eps": 100000.0,
+        "cumulative": 1200
+      },
+      {
+        "t": 0.149,
+        "eps": 100000.0,
+        "cumulative": 1300
+      },
+      {
+        "t": 0.16,
+        "eps": 100000.0,
+        "cumulative": 1400
+      },
+      {
+        "t": 0.171,
+        "eps": 100000.0,
+        "cumulative": 1500
+      },
+      {
+        "t": 0.183,
+        "eps": 86373.64,
+        "cumulative": 1600
+      },
+      {
+        "t": 0.194,
+        "eps": 100000.0,
+        "cumulative": 1700
+      },
+      {
+        "t": 0.205,
+        "eps": 100000.0,
+        "cumulative": 1800
+      },
+      {
+        "t": 0.217,
+        "eps": 100000.0,
+        "cumulative": 1900
+      },
+      {
+        "t": 0.229,
+        "eps": 98945.6,
+        "cumulative": 2000
+      },
+      {
+        "t": 0.24,
+        "eps": 93581.08,
+        "cumulative": 2100
+      },
+      {
+        "t": 0.252,
+        "eps": 98342.42,
+        "cumulative": 2200
+      },
+      {
+        "t": 0.263,
+        "eps": 99179.57,
+        "cumulative": 2300
+      },
+      {
+        "t": 0.275,
+        "eps": 69810.73,
+        "cumulative": 2400
+      }
+    ],
+    "stages": [
+      {
+        "t": 0.013,
+        "producer": 4,
+        "kafka": 4,
+        "spark": 4,
+        "delta": 3
+      },
+      {
+        "t": 0.024,
+        "producer": 8,
+        "kafka": 8,
+        "spark": 8,
+        "delta": 7
+      },
+      {
+        "t": 0.035,
+        "producer": 12,
+        "kafka": 12,
+        "spark": 12,
+        "delta": 11
+      },
+      {
+        "t": 0.047,
+        "producer": 16,
+        "kafka": 16,
+        "spark": 16,
+        "delta": 15
+      },
+      {
+        "t": 0.058,
+        "producer": 21,
+        "kafka": 21,
+        "spark": 20,
+        "delta": 18
+      },
+      {
+        "t": 0.071,
+        "producer": 25,
+        "kafka": 25,
+        "spark": 24,
+        "delta": 22
+      },
+      {
+        "t": 0.082,
+        "producer": 29,
+        "kafka": 29,
+        "spark": 28,
+        "delta": 26
+      },
+      {
+        "t": 0.094,
+        "producer": 33,
+        "kafka": 33,
+        "spark": 32,
+        "delta": 30
+      },
+      {
+        "t": 0.105,
+        "producer": 37,
+        "kafka": 37,
+        "spark": 36,
+        "delta": 34
+      },
+      {
+        "t": 0.116,
+        "producer": 42,
+        "kafka": 42,
+        "spark": 40,
+        "delta": 37
+      },
+      {
+        "t": 0.127,
+        "producer": 46,
+        "kafka": 46,
+        "spark": 44,
+        "delta": 41
+      },
+      {
+        "t": 0.138,
+        "producer": 50,
+        "kafka": 50,
+        "spark": 48,
+        "delta": 45
+      },
+      {
+        "t": 0.149,
+        "producer": 54,
+        "kafka": 54,
+        "spark": 52,
+        "delta": 49
+      },
+      {
+        "t": 0.16,
+        "producer": 58,
+        "kafka": 58,
+        "spark": 56,
+        "delta": 53
+      },
+      {
+        "t": 0.171,
+        "producer": 63,
+        "kafka": 63,
+        "spark": 60,
+        "delta": 56
+      },
+      {
+        "t": 0.183,
+        "producer": 67,
+        "kafka": 67,
+        "spark": 64,
+        "delta": 60
+      },
+      {
+        "t": 0.194,
+        "producer": 71,
+        "kafka": 71,
+        "spark": 68,
+        "delta": 64
+      },
+      {
+        "t": 0.205,
+        "producer": 75,
+        "kafka": 75,
+        "spark": 72,
+        "delta": 68
+      },
+      {
+        "t": 0.217,
+        "producer": 80,
+        "kafka": 80,
+        "spark": 76,
+        "delta": 72
+      },
+      {
+        "t": 0.229,
+        "producer": 84,
+        "kafka": 84,
+        "spark": 80,
+        "delta": 75
+      },
+      {
+        "t": 0.24,
+        "producer": 88,
+        "kafka": 88,
+        "spark": 84,
+        "delta": 79
+      },
+      {
+        "t": 0.252,
+        "producer": 92,
+        "kafka": 92,
+        "spark": 88,
+        "delta": 83
+      },
+      {
+        "t": 0.263,
+        "producer": 96,
+        "kafka": 96,
+        "spark": 92,
+        "delta": 87
+      },
+      {
+        "t": 0.275,
+        "producer": 100,
+        "kafka": 100,
+        "spark": 96,
+        "delta": 90
+      }
+    ],
+    "malformed_cumulative": [
+      {
+        "t": 0,
+        "value": 1
+      },
+      {
+        "t": 1,
+        "value": 5
+      },
+      {
+        "t": 2,
+        "value": 9
+      },
+      {
+        "t": 3,
+        "value": 13
+      },
+      {
+        "t": 4,
+        "value": 17
+      },
+      {
+        "t": 5,
+        "value": 22
+      },
+      {
+        "t": 6,
+        "value": 29
+      },
+      {
+        "t": 7,
+        "value": 33
+      },
+      {
+        "t": 8,
+        "value": 37
+      },
+      {
+        "t": 9,
+        "value": 39
+      },
+      {
+        "t": 10,
+        "value": 42
+      },
+      {
+        "t": 11,
+        "value": 45
+      },
+      {
+        "t": 12,
+        "value": 48
+      },
+      {
+        "t": 13,
+        "value": 54
+      },
+      {
+        "t": 14,
+        "value": 61
+      },
+      {
+        "t": 15,
+        "value": 66
+      },
+      {
+        "t": 16,
+        "value": 68
+      },
+      {
+        "t": 17,
+        "value": 70
+      },
+      {
+        "t": 18,
+        "value": 77
+      },
+      {
+        "t": 19,
+        "value": 81
+      },
+      {
+        "t": 20,
+        "value": 84
+      },
+      {
+        "t": 21,
+        "value": 87
+      },
+      {
+        "t": 22,
+        "value": 92
+      },
+      {
+        "t": 23,
+        "value": 98
+      }
+    ],
+    "late_cumulative": [
+      {
+        "t": 0,
+        "value": 9
+      },
+      {
+        "t": 1,
+        "value": 19
+      },
+      {
+        "t": 2,
+        "value": 28
+      },
+      {
+        "t": 3,
+        "value": 38
+      },
+      {
+        "t": 4,
+        "value": 47
+      },
+      {
+        "t": 5,
+        "value": 56
+      },
+      {
+        "t": 6,
+        "value": 66
+      },
+      {
+        "t": 7,
+        "value": 75
+      },
+      {
+        "t": 8,
+        "value": 84
+      },
+      {
+        "t": 9,
+        "value": 94
+      },
+      {
+        "t": 10,
+        "value": 103
+      },
+      {
+        "t": 11,
+        "value": 112
+      },
+      {
+        "t": 12,
+        "value": 122
+      },
+      {
+        "t": 13,
+        "value": 131
+      },
+      {
+        "t": 14,
+        "value": 141
+      },
+      {
+        "t": 15,
+        "value": 150
+      },
+      {
+        "t": 16,
+        "value": 159
+      },
+      {
+        "t": 17,
+        "value": 169
+      },
+      {
+        "t": 18,
+        "value": 178
+      },
+      {
+        "t": 19,
+        "value": 188
+      },
+      {
+        "t": 20,
+        "value": 197
+      },
+      {
+        "t": 21,
+        "value": 206
+      },
+      {
+        "t": 22,
+        "value": 216
+      },
+      {
+        "t": 23,
+        "value": 225
+      }
+    ]
+  },
+  "batches": [
+    {
+      "batch_id": 0,
+      "rows_in": 100,
+      "valid": 94,
+      "malformed": 1,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.382461+00:00"
+    },
+    {
+      "batch_id": 1,
+      "rows_in": 100,
+      "valid": 94,
+      "malformed": 4,
+      "dupes_dropped": 2,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.393469+00:00"
+    },
+    {
+      "batch_id": 2,
+      "rows_in": 100,
+      "valid": 91,
+      "malformed": 4,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.404691+00:00"
+    },
+    {
+      "batch_id": 3,
+      "rows_in": 100,
+      "valid": 93,
+      "malformed": 4,
+      "dupes_dropped": 3,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.416215+00:00"
+    },
+    {
+      "batch_id": 4,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 4,
+      "dupes_dropped": 4,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.427705+00:00"
+    },
+    {
+      "batch_id": 5,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 5,
+      "dupes_dropped": 3,
+      "duration_ms": 2,
+      "ts": "2026-11-20T12:33:27.440771+00:00"
+    },
+    {
+      "batch_id": 6,
+      "rows_in": 100,
+      "valid": 88,
+      "malformed": 7,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.451287+00:00"
+    },
+    {
+      "batch_id": 7,
+      "rows_in": 100,
+      "valid": 90,
+      "malformed": 4,
+      "dupes_dropped": 6,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.463067+00:00"
+    },
+    {
+      "batch_id": 8,
+      "rows_in": 100,
+      "valid": 88,
+      "malformed": 4,
+      "dupes_dropped": 8,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.474020+00:00"
+    },
+    {
+      "batch_id": 9,
+      "rows_in": 100,
+      "valid": 93,
+      "malformed": 2,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.485029+00:00"
+    },
+    {
+      "batch_id": 10,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 3,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.496152+00:00"
+    },
+    {
+      "batch_id": 11,
+      "rows_in": 100,
+      "valid": 90,
+      "malformed": 3,
+      "dupes_dropped": 7,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.507222+00:00"
+    },
+    {
+      "batch_id": 12,
+      "rows_in": 100,
+      "valid": 94,
+      "malformed": 3,
+      "dupes_dropped": 3,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.518226+00:00"
+    },
+    {
+      "batch_id": 13,
+      "rows_in": 100,
+      "valid": 90,
+      "malformed": 6,
+      "dupes_dropped": 4,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.529741+00:00"
+    },
+    {
+      "batch_id": 14,
+      "rows_in": 100,
+      "valid": 91,
+      "malformed": 7,
+      "dupes_dropped": 2,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.540765+00:00"
+    },
+    {
+      "batch_id": 15,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 5,
+      "dupes_dropped": 3,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.552803+00:00"
+    },
+    {
+      "batch_id": 16,
+      "rows_in": 100,
+      "valid": 90,
+      "malformed": 2,
+      "dupes_dropped": 8,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.563217+00:00"
+    },
+    {
+      "batch_id": 17,
+      "rows_in": 100,
+      "valid": 91,
+      "malformed": 2,
+      "dupes_dropped": 7,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.574259+00:00"
+    },
+    {
+      "batch_id": 18,
+      "rows_in": 100,
+      "valid": 86,
+      "malformed": 7,
+      "dupes_dropped": 7,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.586584+00:00"
+    },
+    {
+      "batch_id": 19,
+      "rows_in": 100,
+      "valid": 90,
+      "malformed": 4,
+      "dupes_dropped": 6,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.598143+00:00"
+    },
+    {
+      "batch_id": 20,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 3,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.609738+00:00"
+    },
+    {
+      "batch_id": 21,
+      "rows_in": 100,
+      "valid": 92,
+      "malformed": 3,
+      "dupes_dropped": 5,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.621264+00:00"
+    },
+    {
+      "batch_id": 22,
+      "rows_in": 100,
+      "valid": 88,
+      "malformed": 5,
+      "dupes_dropped": 7,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.631786+00:00"
+    },
+    {
+      "batch_id": 23,
+      "rows_in": 74,
+      "valid": 65,
+      "malformed": 6,
+      "dupes_dropped": 3,
+      "duration_ms": 1,
+      "ts": "2026-11-20T12:33:27.642901+00:00"
+    }
+  ],
+  "windows": [
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177930000,
+      "window_end_ms": 1795177940000,
+      "trade_count": 1,
+      "total_qty": 126,
+      "notional": 40260.78,
+      "vwap": 319.53
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177930000,
+      "window_end_ms": 1795177940000,
+      "trade_count": 1,
+      "total_qty": 41,
+      "notional": 14551.72,
+      "vwap": 354.92
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177930000,
+      "window_end_ms": 1795177940000,
+      "trade_count": 1,
+      "total_qty": 8,
+      "notional": 3370.88,
+      "vwap": 421.36
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 1,
+      "total_qty": 2,
+      "notional": 629.6,
+      "vwap": 314.8
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 2,
+      "total_qty": 65,
+      "notional": 24719.9,
+      "vwap": 380.306154
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 4,
+      "total_qty": 563,
+      "notional": 114179.63,
+      "vwap": 202.805737
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 2,
+      "total_qty": 214,
+      "notional": 52410.99,
+      "vwap": 244.911168
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 1,
+      "total_qty": 10,
+      "notional": 2577.8,
+      "vwap": 257.78
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177940000,
+      "window_end_ms": 1795177950000,
+      "trade_count": 1,
+      "total_qty": 121,
+      "notional": 51510.91,
+      "vwap": 425.71
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 3,
+      "total_qty": 384,
+      "notional": 156480.65,
+      "vwap": 407.501693
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 3,
+      "total_qty": 405,
+      "notional": 56277.87,
+      "vwap": 138.957704
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 4,
+      "total_qty": 446,
+      "notional": 147005.0,
+      "vwap": 329.607623
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 4,
+      "total_qty": 495,
+      "notional": 137426.1,
+      "vwap": 277.628485
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 3,
+      "total_qty": 350,
+      "notional": 102145.35,
+      "vwap": 291.843857
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795177950000,
+      "window_end_ms": 1795177960000,
+      "trade_count": 3,
+      "total_qty": 135,
+      "notional": 33995.63,
+      "vwap": 251.819481
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 3,
+      "total_qty": 128,
+      "notional": 31318.62,
+      "vwap": 244.676719
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 3,
+      "total_qty": 232,
+      "notional": 48122.84,
+      "vwap": 207.426034
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 1,
+      "total_qty": 195,
+      "notional": 15143.7,
+      "vwap": 77.66
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 2,
+      "total_qty": 274,
+      "notional": 52556.58,
+      "vwap": 191.812336
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 2,
+      "total_qty": 316,
+      "notional": 77170.63,
+      "vwap": 244.210854
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 1,
+      "total_qty": 200,
+      "notional": 33160.0,
+      "vwap": 165.8
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795177960000,
+      "window_end_ms": 1795177970000,
+      "trade_count": 8,
+      "total_qty": 802,
+      "notional": 246904.55,
+      "vwap": 307.861035
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 5,
+      "total_qty": 620,
+      "notional": 200144.45,
+      "vwap": 322.813629
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 4,
+      "total_qty": 543,
+      "notional": 146190.87,
+      "vwap": 269.228122
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 3,
+      "total_qty": 342,
+      "notional": 101201.42,
+      "vwap": 295.910585
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 2,
+      "total_qty": 98,
+      "notional": 32827.54,
+      "vwap": 334.974898
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 3,
+      "total_qty": 407,
+      "notional": 134730.76,
+      "vwap": 331.033808
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 2,
+      "total_qty": 255,
+      "notional": 32559.36,
+      "vwap": 127.683765
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795177970000,
+      "window_end_ms": 1795177980000,
+      "trade_count": 2,
+      "total_qty": 361,
+      "notional": 78649.34,
+      "vwap": 217.865208
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 4,
+      "total_qty": 569,
+      "notional": 121206.95,
+      "vwap": 213.017487
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 2,
+      "total_qty": 296,
+      "notional": 130582.8,
+      "vwap": 441.158108
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 2,
+      "total_qty": 119,
+      "notional": 39299.86,
+      "vwap": 330.250924
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 3,
+      "total_qty": 193,
+      "notional": 40896.8,
+      "vwap": 211.900518
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 3,
+      "total_qty": 193,
+      "notional": 68337.15,
+      "vwap": 354.078497
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 3,
+      "total_qty": 272,
+      "notional": 86683.44,
+      "vwap": 318.689118
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795177980000,
+      "window_end_ms": 1795177990000,
+      "trade_count": 1,
+      "total_qty": 192,
+      "notional": 12833.28,
+      "vwap": 66.84
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 4,
+      "total_qty": 371,
+      "notional": 63464.81,
+      "vwap": 171.064178
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 4,
+      "total_qty": 358,
+      "notional": 55644.61,
+      "vwap": 155.431872
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 1,
+      "total_qty": 103,
+      "notional": 10733.63,
+      "vwap": 104.21
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 4,
+      "total_qty": 302,
+      "notional": 47525.82,
+      "vwap": 157.370265
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 2,
+      "total_qty": 304,
+      "notional": 84566.96,
+      "vwap": 278.180789
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 5,
+      "total_qty": 530,
+      "notional": 139877.17,
+      "vwap": 263.919189
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 2,
+      "total_qty": 151,
+      "notional": 43565.3,
+      "vwap": 288.511921
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795177990000,
+      "window_end_ms": 1795178000000,
+      "trade_count": 2,
+      "total_qty": 273,
+      "notional": 95460.14,
+      "vwap": 349.670842
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 11,
+      "total_qty": 994,
+      "notional": 314381.59,
+      "vwap": 316.279266
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 15,
+      "total_qty": 1980,
+      "notional": 473196.5,
+      "vwap": 238.988131
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 12,
+      "total_qty": 1189,
+      "notional": 329263.01,
+      "vwap": 276.924315
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 12,
+      "total_qty": 1215,
+      "notional": 328184.56,
+      "vwap": 270.110749
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 8,
+      "total_qty": 976,
+      "notional": 323581.63,
+      "vwap": 331.538555
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 8,
+      "total_qty": 878,
+      "notional": 244550.24,
+      "vwap": 278.531025
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 11,
+      "total_qty": 1150,
+      "notional": 305499.47,
+      "vwap": 265.651713
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178000000,
+      "window_end_ms": 1795178010000,
+      "trade_count": 9,
+      "total_qty": 1020,
+      "notional": 295787.34,
+      "vwap": 289.987588
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 24,
+      "total_qty": 2561,
+      "notional": 663782.49,
+      "vwap": 259.18879
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 30,
+      "total_qty": 2808,
+      "notional": 760711.13,
+      "vwap": 270.908522
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 35,
+      "total_qty": 2882,
+      "notional": 799349.07,
+      "vwap": 277.35915
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 35,
+      "total_qty": 3078,
+      "notional": 871649.68,
+      "vwap": 283.187031
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 34,
+      "total_qty": 3877,
+      "notional": 1328520.06,
+      "vwap": 342.667026
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 23,
+      "total_qty": 2421,
+      "notional": 793078.94,
+      "vwap": 327.583205
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 35,
+      "total_qty": 3834,
+      "notional": 1078995.2,
+      "vwap": 281.428065
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178010000,
+      "window_end_ms": 1795178020000,
+      "trade_count": 27,
+      "total_qty": 2773,
+      "notional": 627001.16,
+      "vwap": 226.109326
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 26,
+      "total_qty": 2529,
+      "notional": 805947.2,
+      "vwap": 318.682167
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 24,
+      "total_qty": 2277,
+      "notional": 640679.07,
+      "vwap": 281.369816
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 33,
+      "total_qty": 3464,
+      "notional": 878487.03,
+      "vwap": 253.604801
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 27,
+      "total_qty": 3277,
+      "notional": 886859.93,
+      "vwap": 270.631654
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 32,
+      "total_qty": 2804,
+      "notional": 836230.51,
+      "vwap": 298.227714
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 34,
+      "total_qty": 3029,
+      "notional": 764167.0,
+      "vwap": 252.283592
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 34,
+      "total_qty": 3197,
+      "notional": 921970.31,
+      "vwap": 288.386084
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178020000,
+      "window_end_ms": 1795178030000,
+      "trade_count": 34,
+      "total_qty": 3658,
+      "notional": 1017881.66,
+      "vwap": 278.261799
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 30,
+      "total_qty": 3426,
+      "notional": 964483.84,
+      "vwap": 281.518926
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 25,
+      "total_qty": 2440,
+      "notional": 586266.51,
+      "vwap": 240.27316
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 29,
+      "total_qty": 3161,
+      "notional": 799306.53,
+      "vwap": 252.865084
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 32,
+      "total_qty": 3111,
+      "notional": 788280.27,
+      "vwap": 253.384851
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 25,
+      "total_qty": 2955,
+      "notional": 706145.95,
+      "vwap": 238.966481
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 32,
+      "total_qty": 3574,
+      "notional": 886613.76,
+      "vwap": 248.07324
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 25,
+      "total_qty": 2565,
+      "notional": 580316.62,
+      "vwap": 226.244296
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178030000,
+      "window_end_ms": 1795178040000,
+      "trade_count": 29,
+      "total_qty": 2791,
+      "notional": 738175.08,
+      "vwap": 264.484085
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 24,
+      "total_qty": 2547,
+      "notional": 679688.48,
+      "vwap": 266.858453
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 37,
+      "total_qty": 3390,
+      "notional": 1001075.29,
+      "vwap": 295.302445
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 30,
+      "total_qty": 3036,
+      "notional": 767414.19,
+      "vwap": 252.771472
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 22,
+      "total_qty": 2382,
+      "notional": 653153.9,
+      "vwap": 274.203988
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 20,
+      "total_qty": 2015,
+      "notional": 589249.78,
+      "vwap": 292.431653
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 30,
+      "total_qty": 3308,
+      "notional": 932113.47,
+      "vwap": 281.775535
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 41,
+      "total_qty": 3477,
+      "notional": 897117.91,
+      "vwap": 258.01493
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178040000,
+      "window_end_ms": 1795178050000,
+      "trade_count": 20,
+      "total_qty": 2073,
+      "notional": 683931.56,
+      "vwap": 329.92357
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 34,
+      "total_qty": 3212,
+      "notional": 787850.94,
+      "vwap": 245.283605
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 21,
+      "total_qty": 1964,
+      "notional": 586250.78,
+      "vwap": 298.49836
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 19,
+      "total_qty": 1878,
+      "notional": 472757.05,
+      "vwap": 251.734318
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 26,
+      "total_qty": 2986,
+      "notional": 829499.72,
+      "vwap": 277.796289
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 35,
+      "total_qty": 3821,
+      "notional": 1014245.03,
+      "vwap": 265.439683
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 28,
+      "total_qty": 2983,
+      "notional": 897130.09,
+      "vwap": 300.7476
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 25,
+      "total_qty": 2554,
+      "notional": 657608.27,
+      "vwap": 257.481703
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178050000,
+      "window_end_ms": 1795178060000,
+      "trade_count": 32,
+      "total_qty": 3735,
+      "notional": 1275290.36,
+      "vwap": 341.443202
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 20,
+      "total_qty": 1993,
+      "notional": 574945.99,
+      "vwap": 288.482684
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 27,
+      "total_qty": 2923,
+      "notional": 917934.64,
+      "vwap": 314.038536
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 26,
+      "total_qty": 2818,
+      "notional": 694261.35,
+      "vwap": 246.366696
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 25,
+      "total_qty": 2338,
+      "notional": 714990.96,
+      "vwap": 305.813071
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 22,
+      "total_qty": 2036,
+      "notional": 543835.94,
+      "vwap": 267.10999
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 22,
+      "total_qty": 1848,
+      "notional": 497271.28,
+      "vwap": 269.08619
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 39,
+      "total_qty": 3913,
+      "notional": 1283693.17,
+      "vwap": 328.058566
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178060000,
+      "window_end_ms": 1795178070000,
+      "trade_count": 30,
+      "total_qty": 2933,
+      "notional": 731791.71,
+      "vwap": 249.502799
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 24,
+      "total_qty": 2095,
+      "notional": 636869.84,
+      "vwap": 303.99515
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 28,
+      "total_qty": 2853,
+      "notional": 783189.68,
+      "vwap": 274.514434
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 33,
+      "total_qty": 3550,
+      "notional": 989907.23,
+      "vwap": 278.847107
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 27,
+      "total_qty": 2684,
+      "notional": 720947.22,
+      "vwap": 268.609247
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 27,
+      "total_qty": 2595,
+      "notional": 655825.74,
+      "vwap": 252.726682
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 23,
+      "total_qty": 2728,
+      "notional": 732098.79,
+      "vwap": 268.364659
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 20,
+      "total_qty": 2212,
+      "notional": 700832.86,
+      "vwap": 316.832215
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178070000,
+      "window_end_ms": 1795178080000,
+      "trade_count": 29,
+      "total_qty": 2635,
+      "notional": 717330.43,
+      "vwap": 272.231662
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 27,
+      "total_qty": 3188,
+      "notional": 825275.52,
+      "vwap": 258.86936
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 31,
+      "total_qty": 3206,
+      "notional": 1036422.27,
+      "vwap": 323.275817
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 34,
+      "total_qty": 3292,
+      "notional": 1015280.72,
+      "vwap": 308.408481
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 18,
+      "total_qty": 2253,
+      "notional": 569405.04,
+      "vwap": 252.731931
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 23,
+      "total_qty": 1906,
+      "notional": 563688.12,
+      "vwap": 295.744029
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 21,
+      "total_qty": 2035,
+      "notional": 669777.37,
+      "vwap": 329.128929
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 35,
+      "total_qty": 3460,
+      "notional": 1110408.69,
+      "vwap": 320.927367
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178080000,
+      "window_end_ms": 1795178090000,
+      "trade_count": 26,
+      "total_qty": 2741,
+      "notional": 720696.67,
+      "vwap": 262.932021
+    },
+    {
+      "symbol": "AAPL",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 18,
+      "total_qty": 1811,
+      "notional": 489601.25,
+      "vwap": 270.348564
+    },
+    {
+      "symbol": "AMZN",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 19,
+      "total_qty": 1820,
+      "notional": 543926.59,
+      "vwap": 298.860764
+    },
+    {
+      "symbol": "GOOG",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 15,
+      "total_qty": 1735,
+      "notional": 473352.24,
+      "vwap": 272.825499
+    },
+    {
+      "symbol": "JPM",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 23,
+      "total_qty": 1911,
+      "notional": 603499.21,
+      "vwap": 315.802831
+    },
+    {
+      "symbol": "META",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 14,
+      "total_qty": 1478,
+      "notional": 426139.97,
+      "vwap": 288.322037
+    },
+    {
+      "symbol": "MSFT",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 23,
+      "total_qty": 2583,
+      "notional": 767120.83,
+      "vwap": 296.98832
+    },
+    {
+      "symbol": "NVDA",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 19,
+      "total_qty": 1468,
+      "notional": 396153.23,
+      "vwap": 269.859149
+    },
+    {
+      "symbol": "TSLA",
+      "window_start_ms": 1795178090000,
+      "window_end_ms": 1795178100000,
+      "trade_count": 23,
+      "total_qty": 2106,
+      "notional": 663871.57,
+      "vwap": 315.228666
+    }
+  ],
+  "spark": {
+    "ok": false
+  }
+}
