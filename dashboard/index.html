@@ -4,109 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Realtime Event Streaming — Run Replay</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-CQBWlNQyVQYI/e/qJQUuSTqy7wfJ48j5+saOZiV5E9uKbQV0DHDvjaI95dvvF3XbPTCcBlpJOXq2mL2YuG2Jg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <style>
-    :root {
-      --bg: #05060f;
-      --cyan: #00f0ff;
-      --magenta: #ff2bd6;
-      --lime: #b6ff00;
-      --panel: #0c0e1a;
-      --text: #e8eefc;
-      --muted: #8b93a7;
-    }
+    :root { --bg:#05060f; --cyan:#00f0ff; --magenta:#ff2bd6; --lime:#b6ff00; --panel:#0c0e1a; --text:#e8eefc; --muted:#8b93a7; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    header {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid #1a1f33;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-    h1 { font-size: 1.15rem; margin: 0; letter-spacing: 0.02em; }
-    .badge {
-      display: inline-block;
-      border: 1px solid var(--magenta);
-      color: var(--magenta);
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .banner {
-      margin: 1rem 1.5rem 0;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--cyan);
-      background: rgba(0, 240, 255, 0.06);
-      color: var(--cyan);
-      border-radius: 8px;
-      font-size: 0.92rem;
-    }
-    .controls {
-      display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
-      margin: 1rem 1.5rem;
-    }
-    button, select {
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid #2a314d;
-      border-radius: 8px;
-      padding: 0.45rem 0.8rem;
-      cursor: pointer;
-    }
-    button:hover { border-color: var(--cyan); color: var(--cyan); }
-    button.primary { border-color: var(--lime); color: var(--lime); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      padding: 0 1.5rem 1.5rem;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid #1a1f33;
-      border-radius: 12px;
-      padding: 1rem;
-    }
-    .card h2 {
-      margin: 0 0 0.75rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .stat {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--cyan);
-      font-variant-numeric: tabular-nums;
-    }
-    .stat.mag { color: var(--magenta); }
-    .stat.lime { color: var(--lime); }
-    .sub { color: var(--muted); font-size: 0.8rem; margin-top: 0.25rem; }
-    canvas { max-height: 220px; }
-    .stages { display: grid; gap: 0.55rem; }
-    .stage-row { display: grid; grid-template-columns: 80px 1fr 40px; gap: 0.5rem; align-items: center; font-size: 0.85rem; }
-    .bar {
-      height: 10px; background: #151a2c; border-radius: 999px; overflow: hidden;
-    }
-    .bar > span {
-      display: block; height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--cyan), var(--magenta));
-      transition: width 0.15s linear;
-    }
-    footer { padding: 1rem 1.5rem 2rem; color: var(--muted); font-size: 0.8rem; }
-    a { color: var(--cyan); }
+    body { margin:0; font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+    header { padding:1.25rem 1.5rem; border-bottom:1px solid #1a1f33; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
+    h1 { font-size:1.15rem; margin:0; }
+    .badge { display:inline-block; border:1px solid var(--magenta); color:var(--magenta); padding:0.25rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600; }
+    .banner { margin:1rem 1.5rem 0; padding:0.75rem 1rem; border:1px solid var(--cyan); background:rgba(0,240,255,0.06); color:var(--cyan); border-radius:8px; font-size:0.92rem; }
+    .controls { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin:1rem 1.5rem; }
+    button, select { background:var(--panel); color:var(--text); border:1px solid #2a314d; border-radius:8px; padding:0.45rem 0.8rem; cursor:pointer; }
+    button:hover { border-color:var(--cyan); color:var(--cyan); }
+    button.primary { border-color:var(--lime); color:var(--lime); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; padding:0 1.5rem 1.5rem; }
+    .card { background:var(--panel); border:1px solid #1a1f33; border-radius:12px; padding:1rem; }
+    .card h2 { margin:0 0 0.75rem; font-size:0.85rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+    .stat { font-size:1.6rem; font-weight:700; color:var(--cyan); font-variant-numeric:tabular-nums; }
+    .stat.mag { color:var(--magenta); } .stat.lime { color:var(--lime); } .stat.flash { color:var(--lime); }
+    .sub { color:var(--muted); font-size:0.8rem; margin-top:0.25rem; }
+    canvas { max-height:220px; width:100% !important; }
+    .stages { display:grid; gap:0.55rem; }
+    .stage-row { display:grid; grid-template-columns:80px 1fr 40px; gap:0.5rem; align-items:center; font-size:0.85rem; }
+    .bar { height:10px; background:#151a2c; border-radius:999px; overflow:hidden; }
+    .bar > span { display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--cyan),var(--magenta)); transition:width 0.15s linear; }
+    footer { padding:1rem 1.5rem 2rem; color:var(--muted); font-size:0.8rem; }
+    a { color:var(--cyan); }
+    #status { margin-left:0.5rem; color:var(--lime); font-size:0.85rem; }
   </style>
 </head>
 <body>
@@ -117,15 +41,14 @@
     </div>
     <span class="badge">RECORDED REPLAY · NOT LIVE</span>
   </header>
-
   <div class="banner">
     This page replays a recorded run from <code>run_metrics.json</code>. It is not connected to a live Kafka or Redpanda cluster.
+    Press <strong>Play</strong> to animate the numbers, charts, and stage bars.
   </div>
-
   <div class="controls">
-    <button class="primary" id="btnPlay">Play</button>
-    <button id="btnPause">Pause</button>
-    <button id="btnReset">Reset</button>
+    <button class="primary" id="btnPlay" type="button">Play</button>
+    <button id="btnPause" type="button">Pause</button>
+    <button id="btnReset" type="button">Reset</button>
     <label class="sub">Speed
       <select id="speed">
         <option value="0.5">0.5x</option>
@@ -136,144 +59,177 @@
       </select>
     </label>
     <span class="sub" id="clock">t = 0.00s</span>
+    <span id="status">Loading…</span>
   </div>
-
   <div class="grid">
     <div class="card"><h2>Events / sec</h2><div class="stat" id="eps">0</div><div class="sub" id="cum">cumulative 0</div></div>
     <div class="card"><h2>Late events</h2><div class="stat mag" id="late">0</div><div class="sub">beyond 30s watermark</div></div>
     <div class="card"><h2>Malformed / DLQ</h2><div class="stat mag" id="bad">0</div><div class="sub">failed schema validation</div></div>
     <div class="card"><h2>Windows closed</h2><div class="stat lime" id="wins">0</div><div class="sub">10s tumbling aggregates</div></div>
   </div>
-
   <div class="grid">
-    <div class="card" style="grid-column: span 2;">
-      <h2>Throughput</h2>
-      <canvas id="epsChart"></canvas>
-    </div>
-    <div class="card">
-      <h2>Late &amp; malformed</h2>
-      <canvas id="qualityChart"></canvas>
-    </div>
-    <div class="card">
-      <h2>Stage view</h2>
-      <div class="stages" id="stages">
+    <div class="card" style="grid-column: span 2;"><h2>Throughput</h2><canvas id="epsChart"></canvas></div>
+    <div class="card"><h2>Late &amp; malformed</h2><canvas id="qualityChart"></canvas></div>
+    <div class="card"><h2>Stage view</h2>
+      <div class="stages">
         <div class="stage-row"><span>Producer</span><div class="bar"><span id="s-producer"></span></div><span id="p-producer">0%</span></div>
         <div class="stage-row"><span>Kafka</span><div class="bar"><span id="s-kafka"></span></div><span id="p-kafka">0%</span></div>
         <div class="stage-row"><span>Spark</span><div class="bar"><span id="s-spark"></span></div><span id="p-spark">0%</span></div>
         <div class="stage-row"><span>Delta</span><div class="bar"><span id="s-delta"></span></div><span id="p-delta">0%</span></div>
       </div>
     </div>
-    <div class="card" style="grid-column: 1 / -1;">
-      <h2>Window aggregates (symbol trade counts in view)</h2>
-      <canvas id="winChart"></canvas>
-    </div>
+    <div class="card" style="grid-column: 1 / -1;"><h2>Window aggregates (symbol trade counts in view)</h2><canvas id="winChart"></canvas></div>
   </div>
-
   <footer>
     <div id="meta"></div>
     <div>Source: <a href="https://github.com/Rahul9121/realtime-event-streaming">github.com/Rahul9121/realtime-event-streaming</a></div>
   </footer>
-
   <script>
-    const state = { data: null, idx: 0, playing: false, timer: null };
-
-    const epsChart = new Chart(document.getElementById('epsChart'), {
-      type: 'line',
-      data: { labels: [], datasets: [{ label: 'events/sec', data: [], borderColor: '#00f0ff', tension: 0.25, pointRadius: 0 }] },
-      options: { responsive: true, animation: false, scales: { x: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' } }, y: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' }, beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8eefc' } } } }
-    });
-    const qualityChart = new Chart(document.getElementById('qualityChart'), {
-      type: 'line',
-      data: { labels: [], datasets: [
-        { label: 'malformed', data: [], borderColor: '#ff2bd6', tension: 0.2, pointRadius: 0 },
-        { label: 'late', data: [], borderColor: '#b6ff00', tension: 0.2, pointRadius: 0 }
-      ]},
-      options: { responsive: true, animation: false, scales: { x: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' } }, y: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' }, beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8eefc' } } } }
-    });
-    const winChart = new Chart(document.getElementById('winChart'), {
-      type: 'bar',
-      data: { labels: [], datasets: [{ label: 'trades', data: [], backgroundColor: '#00f0ff88', borderColor: '#00f0ff', borderWidth: 1 }] },
-      options: { responsive: true, animation: false, scales: { x: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' } }, y: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' }, beginAtZero: true } }, plugins: { legend: { labels: { color: '#e8eefc' } } } }
-    });
-
+  (function () {
+    var state = { data: null, idx: 0, playing: false, timer: null };
+    var statusEl = document.getElementById('status');
+    var axis = {
+      responsive: true,
+      maintainAspectRatio: true,
+      animation: false,
+      scales: {
+        x: { ticks: { color: '#8b93a7', maxTicksLimit: 8 }, grid: { color: '#151a2c' } },
+        y: { ticks: { color: '#8b93a7' }, grid: { color: '#151a2c' }, beginAtZero: true }
+      },
+      plugins: { legend: { labels: { color: '#e8eefc' } } }
+    };
+    var epsChart = null, qualityChart = null, winChart = null;
+    if (typeof Chart !== 'undefined') {
+      epsChart = new Chart(document.getElementById('epsChart'), {
+        type: 'line',
+        data: { labels: [], datasets: [{ label: 'events/sec', data: [], borderColor: '#00f0ff', backgroundColor: 'rgba(0,240,255,0.15)', fill: true, tension: 0.25, pointRadius: 3 }] },
+        options: axis
+      });
+      qualityChart = new Chart(document.getElementById('qualityChart'), {
+        type: 'line',
+        data: { labels: [], datasets: [
+          { label: 'malformed', data: [], borderColor: '#ff2bd6', tension: 0.2, pointRadius: 3 },
+          { label: 'late', data: [], borderColor: '#b6ff00', tension: 0.2, pointRadius: 3 }
+        ]},
+        options: axis
+      });
+      winChart = new Chart(document.getElementById('winChart'), {
+        type: 'bar',
+        data: { labels: [], datasets: [{ label: 'trades', data: [], backgroundColor: '#00f0ff88', borderColor: '#00f0ff', borderWidth: 1 }] },
+        options: axis
+      });
+    } else {
+      statusEl.textContent = 'Chart.js blocked — numbers still work';
+      statusEl.style.color = '#ff2bd6';
+    }
     function setStage(name, pct) {
-      document.getElementById('s-' + name).style.width = pct + '%';
-      document.getElementById('p-' + name).textContent = pct + '%';
+      var w = Math.max(0, Math.min(100, Number(pct) || 0));
+      document.getElementById('s-' + name).style.width = w + '%';
+      document.getElementById('p-' + name).textContent = w + '%';
     }
-
     function render(i) {
-      const d = state.data;
-      const eps = d.timeseries.events_per_second;
-      const stages = d.timeseries.stages;
-      const mal = d.timeseries.malformed_cumulative;
-      const late = d.timeseries.late_cumulative;
-      const n = eps.length;
-      const idx = Math.min(i, n - 1);
-      const cur = eps[idx];
-      document.getElementById('eps').textContent = cur.eps.toFixed(1);
+      var d = state.data; if (!d) return;
+      var eps = d.timeseries.events_per_second;
+      var stages = d.timeseries.stages;
+      var mal = d.timeseries.malformed_cumulative;
+      var late = d.timeseries.late_cumulative;
+      var n = eps.length; if (!n) return;
+      var idx = Math.max(0, Math.min(i, n - 1));
+      var cur = eps[idx];
+      document.getElementById('eps').textContent = Number(cur.eps).toFixed(1);
       document.getElementById('cum').textContent = 'cumulative ' + cur.cumulative;
-      document.getElementById('late').textContent = late[idx].value;
-      document.getElementById('bad').textContent = mal[idx].value;
-      document.getElementById('clock').textContent = 't = ' + cur.t.toFixed(2) + 's / batch ' + idx;
-      const st = stages[idx];
-      setStage('producer', st.producer);
-      setStage('kafka', st.kafka);
-      setStage('spark', st.spark);
-      setStage('delta', st.delta);
-
-      const labels = eps.slice(0, idx + 1).map(x => x.t.toFixed(2));
-      epsChart.data.labels = labels;
-      epsChart.data.datasets[0].data = eps.slice(0, idx + 1).map(x => x.eps);
-      epsChart.update();
-      qualityChart.data.labels = labels;
-      qualityChart.data.datasets[0].data = mal.slice(0, idx + 1).map(x => x.value);
-      qualityChart.data.datasets[1].data = late.slice(0, idx + 1).map(x => x.value);
-      qualityChart.update();
-
-      const winFrac = (idx + 1) / n;
-      const wins = d.windows.slice(0, Math.max(1, Math.floor(d.windows.length * winFrac)));
+      document.getElementById('late').textContent = String(late[idx].value);
+      document.getElementById('bad').textContent = String(mal[idx].value);
+      document.getElementById('clock').textContent = 't = ' + Number(cur.t).toFixed(2) + 's · batch ' + (idx + 1) + '/' + n;
+      var st = stages[idx];
+      setStage('producer', st.producer); setStage('kafka', st.kafka); setStage('spark', st.spark); setStage('delta', st.delta);
+      var labels = eps.slice(0, idx + 1).map(function (x) { return Number(x.t).toFixed(2); });
+      if (epsChart) {
+        epsChart.data.labels = labels;
+        epsChart.data.datasets[0].data = eps.slice(0, idx + 1).map(function (x) { return x.eps; });
+        epsChart.update('none');
+      }
+      if (qualityChart) {
+        qualityChart.data.labels = labels;
+        qualityChart.data.datasets[0].data = mal.slice(0, idx + 1).map(function (x) { return x.value; });
+        qualityChart.data.datasets[1].data = late.slice(0, idx + 1).map(function (x) { return x.value; });
+        qualityChart.update('none');
+      }
+      var winFrac = (idx + 1) / n;
+      var wins = d.windows.slice(0, Math.max(1, Math.floor(d.windows.length * winFrac)));
       document.getElementById('wins').textContent = String(Math.floor(d.summary.window_count * winFrac));
-      const bySym = {};
-      wins.forEach(w => { bySym[w.symbol] = (bySym[w.symbol] || 0) + w.trade_count; });
-      const syms = Object.keys(bySym).sort();
-      winChart.data.labels = syms;
-      winChart.data.datasets[0].data = syms.map(s => bySym[s]);
-      winChart.update();
+      var bySym = {};
+      wins.forEach(function (w) { bySym[w.symbol] = (bySym[w.symbol] || 0) + w.trade_count; });
+      var syms = Object.keys(bySym).sort();
+      if (winChart) {
+        winChart.data.labels = syms;
+        winChart.data.datasets[0].data = syms.map(function (s) { return bySym[s]; });
+        winChart.update('none');
+      }
     }
-
     function tick() {
       if (!state.playing || !state.data) return;
-      const n = state.data.timeseries.events_per_second.length;
-      if (state.idx >= n - 1) { state.playing = false; return; }
+      var n = state.data.timeseries.events_per_second.length;
+      if (state.idx >= n - 1) {
+        state.playing = false;
+        statusEl.textContent = 'Finished · press Play to replay';
+        return;
+      }
       state.idx += 1;
       render(state.idx);
-      const speed = parseFloat(document.getElementById('speed').value);
-      state.timer = setTimeout(tick, Math.max(30, 200 / speed));
+      statusEl.textContent = 'Playing… ' + (state.idx + 1) + '/' + n;
+      var speed = parseFloat(document.getElementById('speed').value) || 1;
+      state.timer = setTimeout(tick, Math.max(80, 450 / speed));
     }
-
-    document.getElementById('btnPlay').onclick = () => {
-      if (!state.data) return;
-      if (state.idx >= state.data.timeseries.events_per_second.length - 1) state.idx = 0;
+    function play() {
+      if (!state.data) { statusEl.textContent = 'Still loading…'; return; }
+      var n = state.data.timeseries.events_per_second.length;
+      if (state.idx >= n - 1) state.idx = 0;
       state.playing = true;
-      tick();
-    };
-    document.getElementById('btnPause').onclick = () => { state.playing = false; clearTimeout(state.timer); };
-    document.getElementById('btnReset').onclick = () => { state.playing = false; clearTimeout(state.timer); state.idx = 0; render(0); };
-
-    fetch('./run_metrics.json')
-      .then(r => r.json())
-      .then(data => {
+      statusEl.textContent = 'Playing…';
+      render(state.idx);
+      clearTimeout(state.timer);
+      var speed = parseFloat(document.getElementById('speed').value) || 1;
+      state.timer = setTimeout(tick, Math.max(80, 450 / speed));
+    }
+    function pause() {
+      state.playing = false;
+      clearTimeout(state.timer);
+      statusEl.textContent = 'Paused';
+    }
+    function reset() {
+      state.playing = false;
+      clearTimeout(state.timer);
+      state.idx = 0;
+      render(0);
+      statusEl.textContent = 'Ready · press Play';
+    }
+    document.getElementById('btnPlay').addEventListener('click', play);
+    document.getElementById('btnPause').addEventListener('click', pause);
+    document.getElementById('btnReset').addEventListener('click', reset);
+    fetch('./run_metrics.json', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (data) {
+        if (!data.timeseries || !data.timeseries.events_per_second || !data.timeseries.events_per_second.length) {
+          throw new Error('metrics missing timeseries');
+        }
         state.data = data;
-        const s = data.summary;
+        var s = data.summary;
         document.getElementById('meta').textContent =
-          `Recorded ${data.meta.recorded_at} · ${s.events_wire} wire events · ${s.after_dedupe} after dedupe · ` +
-          `${s.malformed_count} malformed · ${s.late_count} late · avg ${s.avg_events_per_second} eps · ` +
-          `avg batch ${s.avg_batch_duration_ms} ms · spark: ${data.meta.spark_status}`;
+          'Recorded ' + data.meta.recorded_at + ' · ' + s.events_wire + ' wire events · ' +
+          s.after_dedupe + ' after dedupe · ' + s.malformed_count + ' malformed · ' + s.late_count +
+          ' late · avg ' + s.avg_events_per_second + ' eps · avg batch ' + s.avg_batch_duration_ms +
+          ' ms · spark: ' + data.meta.spark_status;
         render(0);
+        statusEl.textContent = 'Ready · press Play';
+        statusEl.style.color = '#b6ff00';
       })
-      .catch(err => {
+      .catch(function (err) {
+        statusEl.textContent = 'Load failed';
+        statusEl.style.color = '#ff2bd6';
         document.getElementById('meta').textContent = 'Failed to load run_metrics.json: ' + err;
       });
+  })();
   </script>
 </body>
 </html>
